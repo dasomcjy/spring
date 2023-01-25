@@ -1,0 +1,28 @@
+package polimorphism01;
+
+public class TVUser {
+
+	public static void main(String[] args) {
+		
+		//강결합(결합도가 높다) : 유지보수를 어렵게하는 코드이다.
+		
+		SamsungTV tv = new SamsungTV();
+		tv.powerOn();
+		tv.powerOff();
+		tv.volumeUp();
+		tv.volumeDown();
+		
+		System.out.println("================================");
+		
+		//TV 사용자가 Samsung TV에서 LgTV로 바꾸었다. 
+		
+		LgTV tv2 = new LgTV();
+		tv2.turnOn();
+		tv2.turnOff();
+		tv2.soundUp();
+		tv2.soundDown();
+		
+
+	}
+
+}

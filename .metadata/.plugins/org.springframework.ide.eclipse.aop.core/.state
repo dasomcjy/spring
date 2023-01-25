@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="Spring_Demo"/>
+<aop-project name="Spring_Demo3"/>
+<aop-project name="Spring_Demo2"/>
+<aop-project name="SpringBook"/>
+</aop-reference-model>
