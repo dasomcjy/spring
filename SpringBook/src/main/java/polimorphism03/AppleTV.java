@@ -16,7 +16,7 @@ public class AppleTV implements TV {
 	}
 	@Override
 	public void volumeDown() {
-		System.out.println("AppleTV - º¼·ıÀ» ³·Ãä´Ï´Ù.");
+		System.out.println("AppleTV - º¼·ıÀ» ³·Ãä0´Ï´Ù.");
 	}
 
 }
