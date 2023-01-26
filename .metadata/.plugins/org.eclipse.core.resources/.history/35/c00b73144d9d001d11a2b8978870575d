@@ -1,0 +1,5 @@
+package polimorphism05;
+
+public interface Speaker {
+
+}

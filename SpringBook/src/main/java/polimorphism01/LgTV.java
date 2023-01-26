@@ -2,6 +2,7 @@ package polimorphism01;
 
 public class LgTV {
 	
+	
 	public void turnOn() {
 		System.out.println("LgTV - 전원을 켭니다");
 	}
