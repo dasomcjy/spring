@@ -17,6 +17,7 @@ public interface BoardService {
 	BoardDTO getBoard(BoardDTO dto);
 
 	// 3-5. 글 목록 처리 메소드 : getBoardList() : 많은 레코드 
+	// 
 	List<BoardDTO> getBoardList(BoardDTO dto);
 
 }

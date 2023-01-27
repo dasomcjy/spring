@@ -14,7 +14,7 @@ import com.spring.common.JDBCUtil;
 import jakarta.annotation.Resource;
 
 @Repository("boardDAO")		// Spring Framework 에서 자동으로 객체가 생성되어서 RAM(메모리)에 로드  
-public class BoardDAO implements BoardService {
+public class BoardDAO {
 	
 	// DAO : Data Access Object : 
 	// DataBase에 CRUD 하는 객체 : Select, Insert, Update, Delete
@@ -38,7 +38,6 @@ public class BoardDAO implements BoardService {
 			// getBoardList() : 각 각의 레코드를 DTO (1개) , ArrayList에 DTO 객체를 담아서 리턴 
 	
 	// 3-1. 글 들록 처리 메소드 : insertBoard() 
-	@Override
 	public void insertBoard(BoardDTO dto) {
 		System.out.println("==> JDBC로 insertBoard() 기능처리 - 시작");
 		//Connection 객체를 사용해서 PreparedStatement 객체 활성화 
@@ -69,7 +68,6 @@ public class BoardDAO implements BoardService {
 	}
 	
 	// 3-2. 글 수정 처리 메소드 : updateBoard() 
-	@Override
 	public void updateBoard(BoardDTO dto) {
 		System.out.println("==> JDBC로 insertBoard() 기능처리 - 시작 ");
 		
@@ -97,7 +95,6 @@ public class BoardDAO implements BoardService {
 	}
 	
 	// 3-3. 글 삭제 처리 메소드 : deleteBoard() 
-	@Override
 	public void deleteBoard(BoardDTO dto) {
 		System.out.println("==> JDBC로 deleteBoard() 기능처리 - 시작");
 		
@@ -119,7 +116,6 @@ public class BoardDAO implements BoardService {
 	}
 	
 	// 3-4. 글 조회 처리 메소드 : getBoard() : 레코드 1개를 DB에서 select 해서 DTO 객체에 담아서 리턴
-	@Override
 	public BoardDTO getBoard(BoardDTO dto) {
 		System.out.println("==> JDBC로 getBoard() 기능처리 - 시작 ");
 		
@@ -166,9 +162,8 @@ public class BoardDAO implements BoardService {
 	
 	// 3-5. 글 목록 처리 메소드 : getBoardList() : 많은 레코드 
 		// 
-	@Override
 	public List<BoardDTO> getBoardList(BoardDTO dto) {
-		System.out.println("==> JDBC로 getBoardList() 기능처리 - 시작");
+		System.out.println("==> JDBC로 getBoardList() 기능처리");
 		
 		//리턴 돌려줄 변수 선언 : List <= 인터페이스 , 
 			// ArrayList, Vector, LinkedList <== List 인터페이스 구현한 클래스
@@ -204,13 +199,11 @@ public class BoardDAO implements BoardService {
 				System.out.println("테이블에 레코드가 비어있습니다.");
 			}
 			
-			System.out.println("==> JDBC로 getBoardList() 기능처리 - 완료");
 			
 		}catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("==> JDBC로 getBoardList() 기능처리 - 실패");
 		}finally {
-			JDBCUtil.close(rs, pstmt, conn);
+			
 		}
 		
 		return boardList;
