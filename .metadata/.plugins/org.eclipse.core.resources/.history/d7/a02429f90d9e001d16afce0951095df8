@@ -1,0 +1,51 @@
+package com.spring.board;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import org.springframework.stereotype.Repository;
+
+import jakarta.annotation.Resource;
+
+@Repository("boardDAO")		// Spring Framework 에서 자동으로 객체가 생성되어서 RAM(메모리)에 로드  
+public class BoardDAO {
+	
+	// DAO : Data Access Object : 
+	// DataBase에 CRUD 하는 객체 : Select, Insert, Update, Delete
+	
+	// 1. JDBC 관련 변수를 선언 : Connection, Statement/PreparedStatement, ResultSet 
+	private Connection conn = null;
+	private Statement stmt = null;
+	private PreparedStatement pstmt = null;			//주로사용 
+	private ResultSet rs = null; 
+	
+	// 2. SQL 쿼리를 담는 상수에 담아서 처리 변수 생성후 할당 : 상수명 : 전체 대문자로 사용
+	private final String BOARD_INSERT = 
+			"insert into board(seq, title, writer, content) values(select nvl(max(seq),0)+1 from board, ?,?,?)"; 
+	private final String BOARD_UPDATE = "update board set title=?, content=? where seq=? "; 
+	private final String BOARD_DELETE = "delete board where seq=?"; 
+	private final String BOARD_GET = "select * from board where seq=?"; 			//DataBase의 테이블에서 1개의 레코드만 출력(상세보기)
+	private final String BOARD_LIST = "select * from board order by seq desc"; 			//DataBase의 테이블의 여러개의 레코드를 LIST (ArrayList() ) 
+	
+	// 3. 메소드 : insertBoard(), updateBoard(), deleteBoard(), getBoard() , getBoardList()
+	
+	// 3-1. 글 들록 처리 메소드 : insertBoard() 
+	public void insertBoard(BoardDTO dto) {
+		
+	}
+	
+	// 3-2. 글 수정 처리 메소드 : updateBoard() 
+	public void updateBoard(BoardDTO dto) {
+		
+	}
+	
+	// 3-3. 글 수정 처리 메소드 : updateBoard() 
+	public void updateBoard(BoardDTO dto) {
+		
+	}
+	
+	
+	
+}

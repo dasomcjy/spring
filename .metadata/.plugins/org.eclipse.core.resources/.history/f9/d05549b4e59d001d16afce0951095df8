@@ -1,0 +1,31 @@
+package com.spring.common;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JDBCUtil {
+			//DB를 연결 설정하는 클래스 
+		//1. DB를 연결하는 메소드 
+			//static : 객체생성없이 클래스이름으로 바로 호출 
+		public static Connection getConnection() {
+			
+			String driver = "oracle.jdbc.driver.OracleDriver";
+			String url = "jdbc:oracle:thin:@localhost:1521:XE";
+
+			try {
+			Class.forName(driver) ;
+			return DriverManager.getConnection(url, "C##HR", "1234");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			return null;
+	
+		//2. DB연결을 제거하는 메소드 : Connection, PreparedStatement 객체를 제거
+			//Insert, Update, Delete 
+	
+		
+		//3. DB연결을 제거하는 메소드 : Connection, PreparedStatement, ResultSet 객체를 제거
+			//Select 
+	
+}
