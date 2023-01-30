@@ -41,6 +41,7 @@ public class JDBCUtil {
 				try {
 					if (!pstmt.isClosed()) {	//pstmt 객체가 제거되지 않은 상태라면
 						pstmt.close();
+						System.out.println("pstmt 객체 close()");
 					}
 				}catch (Exception e) {
 					e.printStackTrace();
@@ -53,6 +54,7 @@ public class JDBCUtil {
 				try {
 					if (!conn.isClosed()) {
 						conn.close();
+						System.out.println("conn 객체 close()");
 					}
 				}catch (Exception e) {
 					e.printStackTrace();

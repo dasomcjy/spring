@@ -10,7 +10,7 @@
 <!-- 특정 패키지 하위의 모든 클래스에서 어노테이션(@) 을 읽을 수 있도록 설정  -->
 <!-- polimorphism05 패키지 하위에 구성된 어노테이션을 읽어들이겠다는 설정 -->
 <context:component-scan base-package="polimorphism05"></context:component-scan>
-<context:component-scan base-package="com.spring.common"></context:component-scan>
+<context:component-scan base-package="com.spring"></context:component-scan> <!-- com. spring 이하의 모든 것을 사용할 수 있으려면 이렇게 설정해야함! -->
 
 
 
