@@ -7,6 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.spring.users.UserDAO;
+import com.spring.users.UserDTO;
+import com.spring.users.UserService;
+import com.spring.users.UserServiceImpl;
+
+
 /**
  * Servlet implementation class DispatcherServlet
  */
@@ -34,7 +43,7 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	// doGet, doPost 의 모든 요청을 처리하는 메소드
-	private void process (HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+	private void process (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// URL : http://localhost:8080/boardweb/getBoardList.do
 		// URI : boardweb/getBoardList.do
@@ -51,11 +60,54 @@ public class DispatcherServlet extends HttpServlet {
 		
 		if (path.equals("/login.do")) {
 			
+			// 클라이언트 요청에 대해서 : /login.do 요청
+			//1. Model : Service (비즈니스 로직을 처리) , ( DTO, DAO )
+			//2. View 페이지로 전달 : *.jsp 파일
+			
+			
 			System.out.println("사용자 정보 처리");
+			System.out.println("/login.do 요청을 보냈습니다. ");
+			
+			// 1. 클라이언트에서 보내는 변수 값을 받아서 변수에 저장
+			String id = request.getParameter("id");
+			String passsword = request.getParameter("passsword");
+			
+			System.out.println("폼에서 넘긴 변수 id값 출력 :" + id);
+			System.out.println("폼에서 넘긴 변수 passsword값 출력 :" + passsword);
+			
+			
+			//2. 클라이언트에서 넘긴 변수값을 받아서 저장도니 변수를 DTO에 Setter 주입
+			UserDTO dto = new UserDTO();
+			dto.setId(id);
+			dto.setPasssword(passsword);
+			
+			//3. 비즈니스 로직을 처리하는 인터페이스에 dto를 주입해서 비즈니스 로직을 처리
+			
+			//UserService user = new UserServiceImpl();
+			UserDAO user = new UserDAO();
+			
+			UserDTO userD = user.getUser(dto); 
+			
+			// DB의 클라이언트에서 넘긴 ID와 password 변수의 값을 select 해서 그 값을 DTO에 담아서 리턴
+			System.out.println(userD);
+			
+			
+			//4. 백엔드의 로직을 모두 처리후 view 페이지로 이동 
+			if (userD.getId() != null) {	//클라이언트에서 전송한 ID와 PASSWORD 가 DB의 값과 일치 할때
+				response.sendRedirect("getBoardList.jsp");
+				System.out.println("아이디와 패스워드 일치");
+				
+			}else { // Client에서 전송한 ID와 PASSWORD중 일치하지 않을떄
+				response.sendRedirect("login.jsp");
+				System.out.println("아이디와 패스워드 불일치");
+				
+			}
 			
 		}else if (path.equals("/getBoardList.do")) {
 			
 			System.out.println("게시판 정보 출력");
+			
+			
 			
 		}else if (path.equals("/logout.do")) {
 			

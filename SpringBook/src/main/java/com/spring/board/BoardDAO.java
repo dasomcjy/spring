@@ -177,7 +177,7 @@ public class BoardDAO {
 				//LinkedList : 자주 수정, 삭제시 성능이 빠르게 처리도미
 		
 		List<BoardDTO> boardList = new ArrayList<BoardDTO>();
-		BoardDTO board = new BoardDTO();
+		BoardDTO board ;
 		
 		try {
 			conn = JDBCUtil.getConnection();
@@ -187,6 +187,7 @@ public class BoardDAO {
 			
 			if (rs.next()) {
 				do {
+					board = new BoardDTO();
 					//rs에서 가져온 1개의 레코드를 board (DTO)
 					board.setSeq(rs.getInt("SEQ"));
 					board.setTitle(rs.getString("TITLE"));

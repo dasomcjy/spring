@@ -1,4 +1,4 @@
-package com.spring.common;
+package com.spring.test;
 
 import java.util.List;
 
@@ -29,6 +29,11 @@ public class Client_Test_getBoardList {
 		for (BoardDTO board : boardList) {
 			System.out.println(board);
 		}
+		
+		
+		
+		
+		
 	}
 
 }

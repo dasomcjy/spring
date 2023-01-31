@@ -46,12 +46,12 @@
 <!-- ActionController Mapping 설정 -->
 
 <servlet>
-	<servlet-name>Action</servlet-name>
+	<servlet-name>Ac</servlet-name>
 	<servlet-class>com.spring.controller.ActionController</servlet-class>
 </servlet>
 
 <servlet-mapping>
-	<servlet-name>Action</servlet-name>
+	<servlet-name>Ac</servlet-name>
 	<url-pattern>*.action</url-pattern>
 </servlet-mapping>
 

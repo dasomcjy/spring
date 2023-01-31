@@ -1,0 +1,38 @@
+MVC M2로 개발 진행
+
+0. DB의 테이블 생성 (board, users) : Oracle, H2 Database
+1. DB 연결, 사용한 객체를 제거하는 클래스
+	JDBCUtil.java
+		-- DB Connection 객체 생성
+		-- 사용한 객체를 제거하는 메소드
+		close( pstmt, conn ) 		//insert, Update,Delete
+		close( rs, pstmt, conn ) 	//select
+		
+2. DTO (VO) : Client 에서 받은 변수를 DTO(VO)에 담아서 DAO 전달,
+		DAO 에서  받은 변수를 DTO(VO)에 담아서 Client에게 전달
+				데이터를 받아서 전달하는 전달자 역할
+						
+3. DAO : DataBase 를 엑세스 해서 Select,Insert, Update, Delete 하는 쿼리를 담은 JAVA클래스
+@Repository("boardDAO")
+-- BoardDAO.java
+
+4. BoardService 인터페이스 (비즈니스 로직을 처리하는 인터페이스 생성) <== 수정, 유지보수를
+쉽게 하기 위해 // 비즈니스 로직을 처리
+
+-- BoardService.java <== 인터페이스, DAO의 메소드를 가지고 생성<
+
+5. BoardServiceIml : BoardService 를 구현한 구현 클래스
+@Service("boardService")
+--BoardServiceImpl.java
+
+6. 서비스의 메소드가 잘 작동 되는지 test
+ service 인터페이스의 메소드 호출 (DTO)					
+
+								
+7. Controller 코딩
+
+	//Client 의 요청을 받아서 service 메소드 호출 (비즈니스 로직 처리)
+	//view 페이지 돌려줌
+	
+8. View 페이지를 작성 완료						
+						
