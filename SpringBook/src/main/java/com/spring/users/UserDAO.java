@@ -1,5 +1,6 @@
 package com.spring.users;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +25,7 @@ public class UserDAO  {
 	
 	public UserDTO getUser(UserDTO dto) {
 		//객체 선언 : DB에서 select 한 레코드를 user에 담아서 리턴 
-		UserDTO user = new UserDTO(); 
+		UserDTO user = null;
 		
 		// System.out.println("DAO - " + dto.getId());
 		//System.out.println("DAO - " + dto.getPasssword());
@@ -35,14 +36,19 @@ public class UserDAO  {
 			pstmt = conn.prepareStatement(USER_GET);
 			
 			//pstmt 에 할당된 쿼리에 ? , ?  에 변수값을 할당후 실행 : dto에 변수값으로 할당.
-			pstmt.setNString(1, dto.getId());
+			pstmt.setString(1, dto.getId());
 			pstmt.setString(2, dto.getPasssword());
 			
 			rs = pstmt.executeQuery(); 		//select 문이므로 executeQuery()를 실행후 rs로 리턴
 			
 			//rs에 담긴 값을 가져와서 DTO(user) 에 저장후 리턴 돌려줌
 			
+			
+			//DB의 ID와 Pass가 모두 일치할 경우 if 문이 작동됨
 			if (rs.next()) {	//레코드의 값이 존자할때 커서를 해당 레코드로 이동
+				
+				user = new UserDTO(); 
+				
 				
 				System.out.println("DB에서 값이 잘 select 되었습니다. ");
 				

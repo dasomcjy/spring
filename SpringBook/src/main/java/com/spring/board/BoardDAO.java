@@ -177,17 +177,20 @@ public class BoardDAO {
 				//LinkedList : 자주 수정, 삭제시 성능이 빠르게 처리도미
 		
 		List<BoardDTO> boardList = new ArrayList<BoardDTO>();
-		BoardDTO board ;
+			BoardDTO board ;
 		
 		try {
 			conn = JDBCUtil.getConnection();
+			//BOARD_LIST = "select * from board order by seq desc"; 	
 			pstmt = conn.prepareStatement(BOARD_LIST);
 			
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
 				do {
+					//DTO 객체는 여기서 만들어야함. ( 별도의 객체에 담기게됨 )
 					board = new BoardDTO();
+					
 					//rs에서 가져온 1개의 레코드를 board (DTO)
 					board.setSeq(rs.getInt("SEQ"));
 					board.setTitle(rs.getString("TITLE"));
