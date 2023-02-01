@@ -48,6 +48,8 @@ public class BoardDAO {
 			//오류가 발생시 프로그램이 종료되지 않도록 try catch 블락으로 처리
 			
 			conn = JDBCUtil.getConnection();
+			//BOARD_INSERT = "insert into board(seq, title, writer, content) 
+			//            values((select nvl(max(seq),0)+1 from board), ?,?,?)"; 
 			pstmt = conn.prepareStatement(BOARD_INSERT);
 			
 			// pstmt 에 ? 에 변수값을 할당.
@@ -76,6 +78,7 @@ public class BoardDAO {
 		try {
 			// 객체 생성
 			conn = JDBCUtil.getConnection();
+			// BOARD_UPDATE = "update board set title=?, content=? where seq=? "; 
 			pstmt = conn.prepareStatement(BOARD_UPDATE);
 			
 			//pstmt 의 ? 에 dto에서 넘어오는 변수값 할당.
@@ -129,6 +132,7 @@ public class BoardDAO {
 		try {
 			//객체 생성 : Connection, PreparedStatement
 			conn = JDBCUtil.getConnection();
+			//BOARD_GET = "select * from board where seq=?"; 
 			pstmt = conn.prepareStatement(BOARD_GET);
 			pstmt.setInt(1, dto.getSeq());
 			

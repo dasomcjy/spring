@@ -156,14 +156,85 @@ public class DispatcherServlet extends HttpServlet {
 			dto.setWriter(writer);
 			dto.setContent(content);
 			
-			dao.insertBoard(dto); 	//DB에 Insert가 완료됨
+			dao.insertBoard(dto); 	//DB에 Insert/ Update /delete 가 완료됨
 			
 			// 3. view페이지를 전송
 			response.sendRedirect("getBoardList.do");
+		
+			
+		}else if (path.equals("/getBoard.do")) {
+			
+			System.out.println("게시판 상세 내용보기 - /getBoard.do 요청함");
+			
+			// 1. 클라이언트의 넘긴 변수 값 받기 ("seq") 
+			String seq = request.getParameter("seq");		//getParameter로 넘어오는 값은 모두 String
+			System.out.println("seq 변수값 : " + seq);
+			
+			// 2. 비즈니스 로직 처리 : 파라미터로 받은 값을 DTO에 저장후 getBoard(dto) 메소드 호출
+			BoardDTO dto = new BoardDTO();
+			BoardDAO dao = new BoardDAO();
+			
+			//클라이언트에게 받은 값을 dto에 setter 주입
+			dto.setSeq(Integer.parseInt(seq));
+			
+			//리턴을 받아온다.
+			BoardDTO board = dao.getBoard(dto);
+			
+			//DB의 값이 저장된 DTO (board) 를 session 변수에 할당해서 뷰 페이지로 전달
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("board", board);
+			
+			// 3. 뷰 페이지로 전달 
+			response.sendRedirect("getBoard.jsp");
 			
 			
+		}else if (path.equals("/updateBoard.do")) {
+			
+			System.out.println("글 수정 처리");
+		
+			// 1. 클라이언트에서 넘어오는 변수를 받음.
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			String seq = request.getParameter("seq");
+			
+			/*
+			System.out.println(seq);
+			System.out.println(title);
+			System.out.println(content);
+			*/
+			
+			// 2. DTO, DAO 객체를 사용해서 비즈니스 로직 처리 
+			BoardDTO dto = new BoardDTO();
+			BoardDAO dao = new BoardDAO();
+			
+			dto.setSeq(Integer.parseInt(seq));
+			dto.setTitle(title);
+			dto.setContent(content);
+			
+			dao.updateBoard(dto);
+			
+			// 3. 백엔드의 로직을 모두 처리후 client 에게 view 페이지로 이동
+			response.sendRedirect("getBoardList.do"); 
 			
 			
+				
+		}else if (path.equals("/deleteBoard.do")) {
+			System.out.println("글 삭제 처리");
+			
+			// 1. 클라이언트에서 넘긴 seq를 받아서 변수에 저장함.
+			String seq = request.getParameter("seq");
+			
+			// 2. DTO, DAO에 로직 처리 (백엔드의 바즈니스 로직 처리)
+			BoardDTO dto = new BoardDTO();
+			BoardDAO dao = new BoardDAO();
+			
+			dto.setSeq(Integer.parseInt(seq));
+			
+			dao.deleteBoard(dto);
+			
+			// 3. 비즈니스 로직 처리 완료후 View 페이지로 이동
+			response.sendRedirect("getBoardList.do");
 			
 			
 		}else if (path.equals("/logout.do")) {
