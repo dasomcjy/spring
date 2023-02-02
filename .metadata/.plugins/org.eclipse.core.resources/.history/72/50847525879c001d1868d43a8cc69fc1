@@ -1,5 +1,0 @@
-package polimorphism02;
-
-public interface TV {
-
-}

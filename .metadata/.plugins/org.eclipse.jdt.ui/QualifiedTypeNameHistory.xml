@@ -16,13 +16,11 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="com.spring.board.BoardService"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="com.spring.common.JDBCUtil"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="com.spring.board.BoardDTO"/>
     <fullyQualifiedTypeName name="com.spring.users.UserDTO"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.spring.users.UserService"/>
@@ -31,4 +29,8 @@
     <fullyQualifiedTypeName name="com.spring.users.UserDAO"/>
     <fullyQualifiedTypeName name="org.apache.catalina.connector.Response"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="com.spring.board.BoardDTO"/>
+    <fullyQualifiedTypeName name="com.spring.board.BoardDAO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>

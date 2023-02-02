@@ -106,6 +106,7 @@ public class BoardDAO {
 		
 		try {
 			conn = JDBCUtil.getConnection();
+			//BOARD_DELETE = "delete board where seq=?"; 
 			pstmt = conn.prepareStatement(BOARD_DELETE);
 			pstmt.setInt(1, dto.getSeq());
 			

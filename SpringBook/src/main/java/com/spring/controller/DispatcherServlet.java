@@ -86,7 +86,7 @@ public class DispatcherServlet extends HttpServlet {
 			System.out.println("폼에서 넘긴 변수 passsword값 출력 :" + passsword);
 			
 			
-			//2. 클라이언트에서 넘긴 변수값을 받아서 저장도니 변수를 DTO에 Setter 주입
+			//2. 클라이언트에서 넘긴 변수값을 받아서 저장된 변수를 DTO에 Setter 주입
 			UserDTO dto = new UserDTO();
 			dto.setId(id);
 			dto.setPasssword(passsword);
