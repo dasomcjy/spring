@@ -31,12 +31,12 @@ public class MemberDAO {
 	
 	// 글 로그인 처리 메소드 : loginMB()
 	
-	public int loginMB (MemberDTO dto) {
+	public boolean loginMB (MemberDTO dto) {
 		System.out.println("==> JDBC로 loginMB() 기능처리 - 시작");
 		//Connection 객체를 사용해서 PreparedStatement 객체 활성화 
 	
 		
-		int cnt = 0;
+		boolean passs = false;
 		
 		try {
 			//오류가 발생시 프로그램이 종료되지 않도록 try catch 블락으로 처리
@@ -52,10 +52,9 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				cnt = rs.getInt("CNT");
-				cnt += 1;				
+				passs = true;	
 			}else {
-				cnt = 0;
+				passs = false;
 			}
 			
 			System.out.println("==> JDBC로 LoginMB() 기능처리 - 완료");
@@ -68,7 +67,7 @@ public class MemberDAO {
 			System.out.println("모든 객체가 잘 close() 되었습니다.");
 		}
 	
-		return cnt;
+		return  passs;
 	}
 	
 	// 글 등록 처리 메소드 : insertMB() 

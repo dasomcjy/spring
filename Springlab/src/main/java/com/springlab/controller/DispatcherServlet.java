@@ -63,11 +63,12 @@ public class DispatcherServlet extends HttpServlet {
 			dto.setId(id);
 			dto.setPass(pass);
 			
-			int check = dao.loginMB(dto);
+			boolean passs = dao.loginMB(dto);
 			
-			if(check > 0) {
+			if(passs == true) {
 				response.sendRedirect("getMemberList.do");
 				System.out.println("아이디와 패스워드 일치");
+	
 			}else {
 				response.sendRedirect("login.jsp");
 				System.out.println("아이디와 패스워드 불일치");
